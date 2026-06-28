@@ -4,33 +4,6 @@ ReBiAt is a deep-learning system for keyword traffic fingerprinting on iCloud Pr
 (1) preprocessing raw PCAP captures into fixed-length packet sequences (L=500) and 15-dimensional global feature vectors; (2) extracting representations with a ResNet-10 frontend for local burst features and a BiGRU with temporal attention for longer-range structure; (3) classifying keywords with a softmax head in closed-world mode and rejecting out-of-distribution traffic in open-world mode using calibrated scores (max-softmax, energy, Mahalanobis). The system is evaluated on a macOS dataset of 50 monitored keywords with ~500 traces each (~25,000 labeled traces total), and is compared against Var-CNN and NetCLR across four scenarios: closed-world accuracy, open-world recognition, concept drift adaptation, and defense robustness (FRONT, WTF-PAD, BurstGuard).
 
 ---
-
-## Publishing to GitHub
-
-```bash
-# One-time setup — run from inside the ReBiAt_code/ folder
-git init
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-
-# Stage, commit, and push
-git add .
-git commit -m "Initial release: ReBiAt keyword traffic fingerprinting pipeline"
-git branch -M main
-git push -u origin main
-```
-
-To update after edits:
-
-```bash
-git add .
-git commit -m "describe your change here"
-git push
-```
-
-> **Before pushing**, make sure no raw PCAP files or `.npz` dataset files are included — add them to `.gitignore` if needed (they can be large and may contain research data).
-
----
-
 ## Requirements
 
 Python 3.10+, PyTorch 2.x, scikit-learn, numpy, scipy, scapy, tqdm, joblib, matplotlib.
