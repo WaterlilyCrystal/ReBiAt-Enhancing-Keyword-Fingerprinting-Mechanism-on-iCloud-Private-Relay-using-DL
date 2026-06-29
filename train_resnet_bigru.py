@@ -796,6 +796,12 @@ def run(args):
         best_params = hp_search_optuna(args, X_seq, X_global, y, classes, device)
         args.lr = best_params.get("lr", args.lr)
         args.batch_size = int(best_params.get("batch_size", args.batch_size))
+    elif args.hp_json:
+        _d = json.loads(Path(args.hp_json).read_text())
+        best_params = _d.get("best_params", _d) or {}
+        args.lr = float(best_params.get("lr", args.lr))
+        args.batch_size = int(best_params.get("batch_size", args.batch_size))
+        print(f"Fixed hyperparameters from {args.hp_json}: {best_params}")
 
     if args.kfold > 1:
         run_kfold(args, X_seq, X_global, y, classes, device, k=args.kfold)
@@ -1034,6 +1040,13 @@ if __name__ == "__main__":
     parser.add_argument("--n_trials",     type=int,   default=20)
     parser.add_argument("--trial_epochs", type=int,   default=30,
                         help="epochs per hyperparameter-search trial before final retraining")
+    parser.add_argument("--hp_json",      default=None,
+                        help="Path to a JSON containing fixed best hyperparameters (a flat "
+                             "dict or {'best_params': {...}}). When set with "
+                             "--hp_search none, the run uses those fixed "
+                             "hyperparameters (lr, batch_size, gru_hidden, dropout_enc, "
+                             "label_smoothing) instead of the defaults, without "
+                             "re-running the search.")
     parser.add_argument("--save_attn",    action="store_true")
     parser.add_argument("--loss",         choices=["ce", "focal"], default="focal",
                         help="ce=CrossEntropy  focal=FocalLoss(gamma=2)")
