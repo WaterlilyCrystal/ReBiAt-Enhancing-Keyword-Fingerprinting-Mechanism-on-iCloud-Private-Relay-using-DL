@@ -115,7 +115,7 @@ python compare_all_methods.py \
 
 ## Running on Kaggle
 
-The `_kaggle.py` source files in the parent directory (`../`) were the original Kaggle notebook cells adapted for the Kaggle environment (different paths, GPU session constraints, inline outputs). For the full Kaggle workflow, including dataset mounting, output paths, and notebook execution order, refer to `../BASELINE_COMPARISON_RUNBOOK.md`.
+For the full Kaggle workflow adapted for the Kaggle environment (different paths, GPU session constraints, inline outputs), including dataset mounting, output paths, and notebook execution order, refer to https://www.kaggle.com/code/linhnpcshust/resnet-bigru.
 
 ---
 
@@ -146,6 +146,13 @@ The runtime model does not perform per-inference feature selection. The 15 globa
 ### This work
 
 Nguyen Phuong Linh. "Keyword Traffic Fingerprinting on Apple iCloud Private Relay Using Deep Learning." Bachelor Thesis, Bach Khoa Cyber Security Center (BKCS), 2025.
+
+**Code:** https://github.com/WaterlilyCrystal/ReBiAt-Enhancing-Keyword-Fingerprinting-Mechanism-on-iCloud-Private-Relay-using-DL
+
+**Datasets (collected by BKCS):**
+- Main 50-keyword dataset: https://www.kaggle.com/datasets/linhnpcshust/macos-26-50
+- Open-world 10 unknown keywords: https://www.kaggle.com/datasets/linhnpcshust/openworld-10kw
+- Temporal-drift 10-keyword (Session 2): https://www.kaggle.com/datasets/linhnpcshust/drift-10kw-after
 
 ---
 
@@ -222,7 +229,7 @@ Library paper citations:
 - Andriy Panchenko, Lukas Niessen, Andreas Zinnen, and Thomas Engel. "Website Fingerprinting in Onion Routing Based Anonymization Networks." _WPES_, 2011.  
   Packet-size histogram bins in the global feature vector.
 
-- Mohammad Saidur Rahman, Prerana Kundnani, Mohsen Imani, and Matthew Wright. "Tik-Tok: The Utility of Packet Timing in Website Fingerprinting Attacks." _PETS_, 2020.  
+- Mohammad Saidur Rahman, Payap Sirinam, Nate Mathews, Kantha Girish Gangadhara, and Matthew Wright. "Tik-Tok: The Utility of Packet Timing in Website Fingerprinting Attacks." _PETS_, 2020.  
   IAT mean/std and response-latency features in the global vector.
 
 - Tao Wang, Xiang Cai, Rishab Nithyanand, Rob Johnson, and Ian Goldberg. "Effective Attacks and Provable Defenses for Website Fingerprinting." _USENIX Security_, 2014.  
@@ -255,14 +262,14 @@ Library paper citations:
 - Sanjit Bhat, David Lu, Albert Kwon, and Srinivas Devadas. "Var-CNN: A Data-Efficient Website Fingerprinting Attack Based on Deep Learning." _PETS_, 2019.  
   Var-CNN architecture implemented in `baselines.py`; trained via `train_baselines.py`.
 
-- Alireza Bahramali, Ramin Khalili, Amir Houmansadr, Dennis Goeckel, and Don Towsley. "Robust Adversarial Attacks Against DNN-Based Wireless Communication Systems." _ACM CCS_, 2023.  
+- Alireza Bahramali, Ardavan Bozorgi, and Amir Houmansadr. "Realistic Website Fingerprinting By Augmenting Network Traces." _ACM CCS_, 2023.  
   NetCLR (contrastive pre-training + fine-tuning) implemented in `baselines.py`; trained via `train_baselines.py`.
 
 ---
 
 ### Defense mechanisms
 
-- Jinjin Gong and Tao Wang. "Zero-delay Lightweight Defenses Against Website Fingerprinting." _USENIX Security Symposium_, 2020.  
+- Jiajun Gong and Tao Wang. "Zero-delay Lightweight Defenses Against Website Fingerprinting." _USENIX Security Symposium_, 2020.  
   FRONT frontal-padding simulator (`front_defend` in `defenses.py`).
 
 - Marc Juarez, Mohsen Imani, Mike Perry, Claudia Diaz, and Matthew Wright. "Toward an Efficient Website Fingerprinting Defense." _ESORICS_, 2016.  
@@ -275,5 +282,5 @@ Library paper citations:
 
 ### iCloud Private Relay
 
-- M. Zohaib, T. Sattarov, J. Müller, and M. Zink. "Is iCloud Private Relay Actually Private?" _IEEE INFOCOM_, 2023.  
-  Establishes the passive-observer setting and motivates the threat model used in this thesis.
+- Ali Zohaib, Jade Sheffey, and Amir Houmansadr. "Investigating Traffic Analysis Attacks on Apple iCloud Private Relay." _ACM ASIA CCS_, 2023.  
+  Background paper.
